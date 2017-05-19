@@ -21,17 +21,16 @@ namespace Lesson09
             MyListItem position = firstItem;
             if (position != null)
             {
-                while (position.getNext() != null)
+                while (position.Next != null)
                 {
-                    position = position.getNext();
+                    position = position.Next;
                 }
-                position.setNext(mylistitem);
-            }
-            else
-            {
+                position.Next = mylistitem;
+            } else {
                 firstItem = mylistitem;
             }
             Console.WriteLine("末尾に｢" + o + "｣を追加");
+            Console.WriteLine();
         }
 
         public void add(Object o, int i)
@@ -41,36 +40,33 @@ namespace Lesson09
             int j = 0;
             while (position != null)
             {
-                position = position.getNext();
+                position = position.Next;
                 j++;
             }
             if (i > j && i != 0)
             {
                 Console.WriteLine("｢" + i + "｣番目は保存データ数を越えているため追加失敗");
+                Console.WriteLine();
                 return;
-            }
-            else if (i < 0)
-            {
-                Console.WriteLine("iの値がゼロより下です。");
+            } else if (i < 0) {
+                Console.WriteLine(i + " : iの値がゼロより下です。");
+                Console.WriteLine();
                 return;
-            }
-            else if (i == 0)
-            {
+            } else if (i == 0) {
                 position = firstItem;
-                mylistitem.setNext(position);
+                mylistitem.Next = position;
                 firstItem = mylistitem;
-            }
-            else
-            {
+            } else {
                 position = firstItem;
                 for (int k = 0; k < i - 1; k++)
                 {
-                    position = position.getNext();
+                    position = position.Next;
                 }
-                mylistitem.setNext(position.getNext());
-                position.setNext(mylistitem);
+                mylistitem.Next = position.Next;
+                position.Next = mylistitem;
             }
             Console.WriteLine("｢" + i + "｣番目に｢" + o + "｣を追加");
+            Console.WriteLine();
         }
 
         public void remove(int i)
@@ -80,38 +76,35 @@ namespace Lesson09
             int j = 0;
             while (position != null)
             {
-                position = position.getNext();
+                position = position.Next;
                 j++;
             }
             if (i >= j)
             {
                 Console.WriteLine("｢" + i + "｣番目は保存データ数を越えているため削除失敗");
+                Console.WriteLine();
                 return;
-            }
-            else if (i < 0)
-            {
-                Console.WriteLine("iの値がゼロより下です。");
+            } else if (i < 0) {
+                Console.WriteLine(i + " : iの値がゼロより下です。");
+                Console.WriteLine();
                 return;
-            }
-            else if (i == 0)
-            {
-                nextposition = nextposition.getNext();
+            } else if (i == 0) {
+                nextposition = nextposition.Next;
                 firstItem = nextposition;
-            }
-            else
-            {
+            } else {
                 position = firstItem;
                 for (int k = 0; k <= i; k++)
                 {
-                    nextposition = nextposition.getNext();
+                    nextposition = nextposition.Next;
                 }
                 for (int k = 0; k < i - 1; k++)
                 {
-                    position = position.getNext();
+                    position = position.Next;
                 }
-                position.setNext(nextposition);
+                position.Next = nextposition;
             }
             Console.WriteLine("｢" + i + "｣番目を削除");
+            Console.WriteLine();
         }
 
         public void print()
@@ -122,14 +115,13 @@ namespace Lesson09
             {
                 while (position != null)
                 {
-                    Console.Write(position.getItem() + " ");
-                    position = position.getNext();
+                    Console.Write(position.Item + " ");
+                    position = position.Next;
                 }
+            } else {
+                Console.Write("リストにデータが登録されていません");
             }
-            else
-            {
-                Console.WriteLine("リストにデータが登録されていません");
-            }
+            Console.WriteLine();
             Console.WriteLine();
         }
     }

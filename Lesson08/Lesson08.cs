@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace Lesson08
 {
@@ -13,20 +14,36 @@ namespace Lesson08
         {
             int cmdno = 0;
             int tmp = 0;
+            int result;
 
             ArrayList indata = new ArrayList();
             ArrayList edata = new ArrayList();
+
+            //コマンドライン引数を表示する
+            Console.WriteLine("入力されたコマンドライン引数を表示");
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine(args[i]);
+            }
+            Console.WriteLine();
 
             for (int i = 0; i < args.Length; i++)
             {
                 try
                 {
-                    cmdno = int.Parse(args[i]);
-                    indata.Add(cmdno);
+                    if (int.TryParse(Microsoft.VisualBasic.Strings.StrConv(args[i], VbStrConv.Narrow), out result))
+                    {
+                        cmdno = int.Parse(Microsoft.VisualBasic.Strings.StrConv(args[i], VbStrConv.Narrow));
+                        indata.Add(cmdno);
+                    }
+                    else
+                    {
+                        edata.Add(args[i]);
+                    }
                 }
-                catch (FormatException)
+                catch (Exception e)
                 {
-                    edata.Add(args[i]);
+                    Console.WriteLine(e.Message);
                 }
             }
             /**
@@ -34,23 +51,14 @@ namespace Lesson08
              */
             if (indata.Count <= 0)
             {
-                Console.WriteLine("数値が登録されていません");
-                Console.WriteLine("登録された内容一覧表示");
-                for (int i = 0; i < edata.Count; i++)
-                {
-                    Console.WriteLine(edata[i]);
-                }
+                writeData(edata, "数値が登録されていません");
                 return;
             }
 
             /**
              * ソート前のデータを一覧表示
              */
-            Console.WriteLine("ソート前のデータを一覧表示");
-            for (int i = 0; i < indata.Count; i++)
-            {
-                Console.WriteLine(indata[i]);
-            }
+            writeData(indata, "ソート前のデータを一覧表示");
 
             /**
              * バブルソートを実施
@@ -71,37 +79,17 @@ namespace Lesson08
             /**
              * ソート後のデータを一覧表示
              */
-            Console.WriteLine("ソート後のデータを一覧表示");
-            for (int i = 0; i < indata.Count; i++)
+            writeData(indata, "ソート後のデータを一覧表示");
+        }
+
+        static void writeData(ArrayList data, string msg)
+        {
+            Console.WriteLine(msg);
+            for (int i = 0; i < data.Count; i++)
             {
-                Console.WriteLine(indata[i]);
+                Console.WriteLine(data[i]);
             }
+            Console.WriteLine();
         }
     }
 }
-/*
-3 test 5 2 you 1 4
-
-ソート前のデータを一覧表示
-3
-5
-2
-1
-4
-ソート後のデータを一覧表示
-1
-2
-3
-4
-5
-
-
-test you yasui
-
-数値が登録されていません
-登録された内容一覧表示
-test
-you
-yasui
-
-*/

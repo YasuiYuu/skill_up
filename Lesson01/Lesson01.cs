@@ -12,7 +12,8 @@ namespace Lesson01
         {
             for (int num = 1; num <= 100; num++)
             {
-                if (num % 3 == 0 || num.ToString().IndexOf('3') >= 0) {
+                if (num % 3 == 0 || num.ToString().IndexOf('3') >= 0)
+                {
                     Console.WriteLine(num);
                 }
             }

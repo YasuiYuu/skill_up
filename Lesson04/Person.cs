@@ -19,59 +19,43 @@ namespace Lesson04
 
         public Person(String name, String address, int age, String telephone)
         {
-            setName(name);
-            setAddress(address);
-            setAge(age);
-            setTelephone(telephone);
+            Name = name;
+            Address = address;
+            Age = age;
+            Telephone = telephone;
         }
 
         public void print()
         {
-            Console.WriteLine("氏名:" + getName());
-            Console.WriteLine("住所:" + getAddress());
-            Console.WriteLine("年齢:" + getAge());
-            Console.WriteLine("電話番号:" + getTelephone());
+            Console.WriteLine("氏名:" + Name);
+            Console.WriteLine("住所:" + Address);
+            Console.WriteLine("年齢:" + Age);
+            Console.WriteLine("電話番号:" + Telephone);
             Console.WriteLine();
         }
 
-        public String getName()
+        public String Name
         {
-            return name;
+            get { return name; }
+            set { name = value; }
         }
 
-        public String getAddress()
+        public String Address
         {
-            return address;
+            get { return address; }
+            set { address = value; }
         }
 
-        public int getAge()
+        public int Age
         {
-            return age;
+            get { return age; }
+            set { age = value; }
         }
 
-        public String getTelephone()
+        public String Telephone
         {
-            return telephone;
-        }
-
-        public void setName(String name)
-        {
-            this.name = name;
-        }
-
-        public void setAddress(String address)
-        {
-            this.address = address;
-        }
-
-        public void setAge(int age)
-        {
-            this.age = age;
-        }
-
-        public void setTelephone(String telephone)
-        {
-            this.telephone = telephone;
+            get { return telephone; }
+            set { telephone = value; }
         }
     }
 }

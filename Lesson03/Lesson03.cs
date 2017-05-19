@@ -32,11 +32,7 @@ namespace Lesson03
             // ★ ----------ここまでの部分は変更しないでください。
 
             // ソート前配列の表示
-            Console.WriteLine("ソート前配列");
-            foreach (int num in data)
-            {
-                Console.Write(num + " ");
-            }
+            writeData(data, "ソート前配列");
 
             int i;
             int j;
@@ -58,20 +54,21 @@ namespace Lesson03
                         flag = 1;
                     }
                 }
+                // ソート中配列の表示
+                writeData(data, "ソート中配列");
             }
             // ソート後配列の表示
-            Console.WriteLine();
-            Console.WriteLine("ソート後配列");
+            writeData(data, "ソート後配列");
+        }
+
+        static void writeData(int[] data, string msg)
+        {
+            Console.WriteLine(msg);
             foreach (int num in data)
             {
                 Console.Write(num + " ");
             }
+            Console.WriteLine();
         }
     }
 }
-/*
-ソート前配列
-2 6 8 7 10 9 4 5 3 1
-ソート後配列
-1 2 3 4 5 6 7 8 9 10
-*/

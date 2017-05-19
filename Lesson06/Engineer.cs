@@ -17,31 +17,27 @@ namespace Lesson06
 
         public Engineer(String name, String address, int age, String skill, String telephone)
         {
-            setName(name);
-            setAddress(address);
-            setAge(age);
-            setSkill(skill);
-            setTelephone(telephone);
+            Name = name;
+            Address = address;
+            Age = age;
+            Skill = skill;
+            Telephone = telephone;
         }
 
         public override void print()
         {
-            Console.WriteLine("氏名:" + getName());
-            Console.WriteLine("住所:" + getAddress());
-            Console.WriteLine("年齢:" + getAge());
-            Console.WriteLine("保有技術:" + getSkill());
-            Console.WriteLine("電話番号:" + getTelephone());
+            Console.WriteLine("氏名:" + Name);
+            Console.WriteLine("住所:" + Address);
+            Console.WriteLine("年齢:" + Age);
+            Console.WriteLine("保有技術:" + Skill);
+            Console.WriteLine("電話番号:" + Telephone);
             Console.WriteLine();
         }
 
-        public String getSkill()
+        public String Skill
         {
-            return skill;
-        }
-
-        public void setSkill(String skill)
-        {
-            this.skill = skill;
+            get { return skill; }
+            set { skill = value; }
         }
     }
 }

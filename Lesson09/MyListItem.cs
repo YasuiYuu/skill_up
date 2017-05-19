@@ -13,40 +13,32 @@ namespace Lesson09
 
         public MyListItem()
         {
-            setItem(null);
-            setNext(null);
+            Item = null;
+            Next = null;
         }
 
         public MyListItem(Object value)
         {
-            setItem(value);
-            setNext(null);
+            Item = value;
+            Next = null;
         }
 
         public MyListItem(Object value, MyListItem id)
         {
-            setItem(value);
-            setNext(id);
+            Item = value;
+            Next = id;
         }
 
-        public MyListItem getNext()
+        public MyListItem Next
         {
-            return next;
+            get { return next; }
+            set { next = value; }
         }
 
-        public void setNext(MyListItem next)
+        public Object Item
         {
-            this.next = next;
-        }
-
-        public Object getItem()
-        {
-            return item;
-        }
-
-        public void setItem(Object item)
-        {
-            this.item = item;
+            get { return item; }
+            set { item = value; }
         }
     }
 }

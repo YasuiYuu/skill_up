@@ -33,22 +33,16 @@ namespace Lesson02
             // ★ ----------ここまでの部分は変更しないでください。
 
             // ソート前配列の表示
-            Console.WriteLine("ソート前配列");
-            foreach (int num in data)
-            {
-                Console.Write(num + " ");
-            }
+            writeData(data, "ソート前配列");
 
-            int i;
-            int j;
             int min;    // 最小値の添字を示す変数
             int tmp;    // 要素交換用仮変数
 
             // 配列dataの最小値の添字を獲得
-            for (i = 0; i < data.Length - 1; i++)
+            for (int i = 0; i < data.Length - 1; i++)
             {
                 min = i;
-                for (j = i + 1; j < data.Length; j++)
+                for (int j = i + 1; j < data.Length; j++)
                 {
                     if (data[j] < data[min])
                     {
@@ -59,20 +53,22 @@ namespace Lesson02
                 tmp = data[i];
                 data[i] = data[min];
                 data[min] = tmp;
+
+                // ソート中配列の表示
+                writeData(data, "ソート中配列");
             }
             // ソート後配列の表示
-            Console.WriteLine();
-            Console.WriteLine("ソート後配列");
+            writeData(data, "ソート後配列");
+        }
+
+        static void writeData(int[] data,string msg)
+        {
+            Console.WriteLine(msg);
             foreach (int num in data)
             {
                 Console.Write(num + " ");
             }
+            Console.WriteLine();
         }
     }
 }
-/*
-ソート前配列
-2 1 7 8 4 10 9 3 6 5
-ソート後配列
-1 2 3 4 5 6 7 8 9 10
-*/
